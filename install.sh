@@ -3,7 +3,7 @@ sudo apt remove neovim -y
 sudo rm -rf /opt/nvim
 
 # installing apt packages
-sudo apt install ripgrep fd-find cargo nodejs tmux -y
+sudo apt install ccls ripgrep fd-find cargo nodejs tmux -y
 
 # updating rustc
 rustup update stable
