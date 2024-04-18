@@ -17,5 +17,8 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 
 # adding nvim to path
 echo "export PATH="$PATH:/opt/nvim-linux64/bin/"" >> ~/.bashrc
+echo 'if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then 
+  tmux a -t default || exec tmux new -s default && exit; 
+fi' >> ~/.bashrc
 source ~/.bashrc
 
