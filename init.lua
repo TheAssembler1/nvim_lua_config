@@ -1,7 +1,15 @@
+-- adding current dir to package path
+local script_dir = debug.getinfo(1, "S").source:match("@?(.*/)")
+if script_dir == nil then
+    -- If the script is executed from the interactive prompt, use the current directory
+    script_dir = ""
+end
+package.path = package.path .. ";" .. script_dir .. "?.lua"
+
 require"log"
 
 -- setting the log level
-G_CURRENT_PRINT_MODE = G_PRINT_MODE.TRACE
+G_CURRENT_PRINT_MODE = G_PRINT_MODE.ERROR
 log_trace("lua started")
 
 require"vim_settings"
