@@ -1,3 +1,10 @@
+echo "creating nvim config dir"
+mkdir ~/.config/nvim
+echo "copying nvim lua config src"
+cp -r * ~/.config/nvim
+echo "moving into nvim config dir"
+cd ~/.config/nvim
+
 # uninstalling previous dependencies
 sudo apt remove neovim -y
 sudo rm -rf /opt/nvim
