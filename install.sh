@@ -10,7 +10,7 @@ sudo apt remove neovim -y
 sudo rm -rf /opt/nvim
 
 # installing apt packages
-sudo apt install ccls ripgrep fd-find cargo nodejs tmux -y
+sudo apt install ccls ripgrep fd-find cargo tmux -y
 
 # updating rustc
 rustup update stable
@@ -21,6 +21,10 @@ cargo install tree-sitter-cli
 # install nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+# isntall latest nodejs
+curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install nodejs
 
 # adding nvim to path
 echo "export PATH="$PATH:/opt/nvim-linux64/bin/"" >> ~/.bashrc
