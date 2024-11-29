@@ -11,7 +11,4 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.wrap = false
 vim.o.cursorline = true
-vim.o.noswapfile = true
 vim.o.clipboard= "unnamedplus"
-vim.o.nohlsearch = true
-vim.o.sytax = true
