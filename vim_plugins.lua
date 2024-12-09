@@ -3,6 +3,13 @@ require"log"
 log_trace("loading plugins")
 
 require"lazy".setup({
+  -- smoothcursor
+  {
+    'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup()
+    end
+  },
   -- multicursor
   {
     "jake-stewart/multicursor.nvim",
@@ -36,14 +43,6 @@ require"lazy".setup({
 
         -- Add all matches in the document
         set({"n", "v"}, "<leader>A", mc.matchAllAddCursors)
-
-        -- You can also add cursors with any motion you prefer:
-        -- set("n", "<right>", function()
-        --     mc.addCursor("w")
-        -- end)
-        -- set("n", "<leader><right>", function()
-        --     mc.skipCursor("w")
-        -- end)
 
         -- Rotate the main cursor.
         set({"n", "v"}, "<left>", mc.nextCursor)
@@ -105,6 +104,7 @@ require"lazy".setup({
         hl(0, "MultiCursorDisabledCursor", { link = "Visual" })
         hl(0, "MultiCursorDisabledVisual", { link = "Visual" })
         hl(0, "MultiCursorDisabledSign", { link = "SignColumn"})
+
     end
   },
   -- rust lsp
@@ -200,3 +200,5 @@ require"lazy".setup({
     end
   }
 })
+
+vim.cmd("SmoothCursorFancyOn")
