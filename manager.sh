@@ -18,7 +18,7 @@ install_nvim() {
     # Install required apt packages
     echo "Installing necessary apt packages..."
     sudo apt update
-    sudo apt install ccls ripgrep fd-find cargo -y
+    sudo apt install ccls ripgrep fd-find cargo curl -y
 
     # Install rustup
     echo "Installing rustup..."
