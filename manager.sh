@@ -2,6 +2,11 @@
 
 set -xe
 
+update_nvim() {
+    echo "Copying Neovim Lua config source..."
+    rsync -av --exclude 'manager.sh' . ~/.config/nvim
+}
+
 install_nvim() {
     echo "Creating Neovim config directory..."
     mkdir -p ~/.config/nvim
@@ -95,8 +100,10 @@ if [ "$1" == "install" ]; then
     install_nvim
 elif [ "$1" == "uninstall" ]; then
     uninstall_nvim
+elif [ "$1" == "update" ]; then 
+    update_nvim
 else
-    echo "Usage: $0 {install|uninstall}"
+    echo "Usage: $0 {install|uninstall|update}"
     exit 1
 fi
 
