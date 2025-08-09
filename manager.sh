@@ -25,7 +25,7 @@ install_nvim() {
     # Install required apt packages
     echo "Installing necessary apt packages..."
     sudo apt update
-    sudo apt install xclip ccls ripgrep fd-find cargo curl -y
+    sudo apt install xclip luarocks ccls ripgrep fd-find cargo curl -y
 
     # Install rustup
     echo "Installing rustup..."
@@ -64,7 +64,7 @@ uninstall_nvim() {
     rm -rf ~/.config/nvim
 
     echo "Removing Neovim binary and dependencies..."
-    sudo apt remove ccls ripgrep fd-find cargo nodejs neovim -y
+    sudo apt remove xclip luarocks ccls ripgrep fd-find cargo nodejs neovim -y
     sudo rm -rf /opt/nvim
 
     # Remove system-installed Rust binaries from /usr/bin
