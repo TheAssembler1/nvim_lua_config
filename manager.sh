@@ -1,6 +1,17 @@
 #!/bin/bash
 set -xe
 
+install_jetbrains_mono() {
+    echo "Installing JetBrains Mono font..."
+    mkdir -p ~/.local/share/fonts/JetBrainsMono
+    cd ~/.local/share/fonts/JetBrainsMono
+    curl -L -o JetBrainsMono-ttf.zip https://download.jetbrains.com/fonts/JetBrainsMono-2.304.zip
+    unzip -o JetBrainsMono-ttf.zip
+    rm JetBrainsMono-ttf.zip
+    fc-cache -fv
+    echo "JetBrains Mono font installed."
+}
+
 update_nvim() {
     echo "Copying Neovim Lua config source..."
     rsync -av --exclude 'manager.sh' . ~/.config/nvim
@@ -52,6 +63,9 @@ install_nvim() {
     echo "Adding Neovim to PATH for current session..."
     export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"
 
+    echo "Installing font"
+    install_jetbrains_mono
+
     echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"' >> ~/.bashrc
 
     echo "Neovim installation completed!"
@@ -102,8 +116,10 @@ elif [ "$1" == "uninstall" ]; then
     uninstall_nvim
 elif [ "$1" == "update" ]; then 
     update_nvim
+elif [ "$1" == "install_font" ]; then
+    install_jetbrains_mono
 else
-    echo "Usage: $0 {install|uninstall|update}"
+    echo "Usage: $0 {install|install_font|uninstall|update}"
     exit 1
 fi
 

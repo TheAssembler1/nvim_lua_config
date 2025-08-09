@@ -14,6 +14,8 @@ log_trace("lua started")
 
 require"vim_settings"
 
+-- set font
+vim.o.guifont = "JetBrains Mono:h14"
 
 -- ensure lazy plugin manager is installed
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
