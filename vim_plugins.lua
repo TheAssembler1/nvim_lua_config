@@ -3,13 +3,6 @@ require"log"
 log_trace("loading plugins")
 
 require"lazy".setup({
-  -- smoothcursor
-  {
-    'gen740/SmoothCursor.nvim',
-    config = function()
-      require('smoothcursor').setup()
-    end
-  },
   -- multicursor
   {
     "jake-stewart/multicursor.nvim",
@@ -113,12 +106,9 @@ require"lazy".setup({
   },
   -- color theme
   {
-    "ful1e5/onedark.nvim",
-    lazy = false,
-    priority = 1000,
+    "folke/tokyonight.nvim",
     config = function()
-      log_trace("onedark config")
-      vim.cmd([[colorscheme onedark]])
+      vim.cmd([[colorscheme tokyonight]])
     end,
   },
   -- zen mode
@@ -200,5 +190,3 @@ require"lazy".setup({
     end
   }
 })
-
-vim.cmd("SmoothCursorFancyOn")
