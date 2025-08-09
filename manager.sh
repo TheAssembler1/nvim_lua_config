@@ -1,14 +1,16 @@
 #!/bin/bash
 
+set -xe
+
 install_nvim() {
     echo "Creating Neovim config directory..."
     mkdir -p ~/.config/nvim
 
     echo "Copying Neovim Lua config source..."
-    cp -r * ~/.config/nvim
+    rsync -av --exclude 'manager.sh' . ~/.config/nvim
 
     echo "Moving into Neovim config directory..."
-    cd ~/.config/nvim || exit
+    cd ~/.config/nvim
 
     # Uninstall previous dependencies
     echo "Uninstalling previous Neovim installation and dependencies..."
@@ -35,9 +37,9 @@ install_nvim() {
 
     # Install Neovim
     echo "Downloading and installing Neovim..."
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-    sudo tar -C /opt -xzf nvim-linux64.tar.gz
-    rm nvim-linux64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+    sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+    rm nvim-linux-x86_64.tar.gz
 
     # Install latest Node.js
     echo "Installing latest Node.js..."
@@ -46,7 +48,7 @@ install_nvim() {
 
     # Add Neovim to PATH
     echo "Adding Neovim to PATH..."
-    echo 'export PATH="$PATH:/opt/nvim-linux64/bin/"' >> ~/.bashrc
+    echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"' >> ~/.bashrc
     source ~/.bashrc
 
     echo "Neovim installation completed!"
