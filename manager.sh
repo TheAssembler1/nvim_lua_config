@@ -33,7 +33,7 @@ install_nvim() {
 
     echo "Installing necessary apt packages..."
     sudo apt update
-    sudo apt install -y xclip xsel lua5.3 liblua5.3-dev luarocks ccls ripgrep fd-find cargo curl python3-pip
+    sudo apt install -y xclip xsel lua5.3 liblua5.3-dev luarocks ccls ripgrep fd-find cargo curl 
 
     echo "Installing rustup..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -56,9 +56,6 @@ install_nvim() {
 
     echo "Installing neovim npm package globally..."
     sudo npm install -g neovim
-
-    echo "Installing pynvim for Python support..."
-    pip3 install --user pynvim
 
     echo "Adding Neovim to PATH for current session..."
     export PATH="$PATH:/opt/nvim-linux-x86_64/bin/"
